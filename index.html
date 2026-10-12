@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS_v3/css_v3.css">
+    <link rel="shortcut icon" href="/Logos/favi17k.png" type="image/x-icon">
+    <title>HelloWeather - Instant Weather Report</title>
+</head>
+
+<body id="mainBody">
+    <!-------------------------------------------------------------------------->
+    <!--                               Cookies                                -->
+    <!-------------------------------------------------------------------------->
+    <div id="blocked" class="block">
+        <div id="cookiesBar" class="cookies">
+            <div class="insideCookie">
+                <div class="cookieText">
+                    <p>This site uses cookies to offer you the desired functionality.<br>By continuing to browse, you agree to the Cookie Policy and to the placement of cookies, with the aim of provide an improved experience.</p>
+                    <a href="">Cookies preferences</a>
+                </div>
+                <div class="cookieButtons">
+                    <div id="acceptButon" class="acceptButton">
+                        <p>Accept all cookies</p>
+                    </div>
+                    <div id="maybeButon" class="declineButton">
+                        <p>Only essential cookies</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-------------------------------------------------------------------------->
+    <!--                               Nav-Bar                                -->
+    <!-------------------------------------------------------------------------->
+    <div class="navbarContainer semiTranspBlack">
+        <div class="navLogo">
+            <div class="navlogoimage">
+                <img id="bigLogo" src="/Logos/HelloWeather.svg" alt="">
+                <img id="smallLogo" src="/Logos/LogoMic-cropped.svg" alt="">
+            </div>
+        </div>
+        <!-------------------------------------------------------------------------->
+        <div class="navMiddle">
+            <div id="navSearch" class="navSearch">
+                <div class="searchBar">
+                    <input id="userInputCity" type="text" placeholder="search...">
+                </div>
+                <div id="searchButtonID" class="searchButon searchButoActive">
+                    <div id="searchBtnDiv" class="searchDiv"></div>
+                    <div id="searchBtnDiv2" class="searchDiv2">
+                        <p id="mapButtonText" class="mapButton" >🗺</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-------------------------------------------------------------------------->
+        <!--                           Nav-Bar Buttons                            -->
+        <!-------------------------------------------------------------------------->
+        <div class="navEndArea">
+            <div id="navClock" class="navTime">12:07<small class="AmPm">PM</small></div>
+            <div class="navButtons">
+                <!-------------------------------------------------------------------------->
+                <div id="nav_Units" class="navUnits">
+                    <div id="units_Area" class="unitsArea">
+                        <div id="units-Celsius" class="unitsCelsius">
+                            <p id="celsius_BtnText">C°</p>
+                        </div>
+                        <div id="units-Fahren" class="unitsFahren">
+                            <p id="fahren_BtnText">F°</p>
+                        </div>
+                    </div>
+                    <div id="Celsius_Unit" class="celsiusUnit"></div>
+                    <div id="Fahren_Unit" class="fahrenUnit"></div>
+                </div>
+                <!-------------------------------------------------------------------------->
+                <div id="navTheme" class="navTheme">
+                    <div id="button-Area" class="buttonArea">
+                        <div id="light-Area" class="lightArea">
+                            <p id="lightBtnText">☀︎</p>
+                        </div>
+                        <div id="dark-Area" class="darkArea">
+                            <p id="darkBtnText">☽</p>
+                        </div>
+                    </div>
+                    <div id="lightBack" class="themeLight"></div>
+                    <div id="darkBack" class="themeDark"></div>
+                </div>
+                <!-------------------------------------------------------------------------->
+            </div>
+        </div>
+    </div>
+    <!-------------------------------------------------------------------------->
+    <!--                            Main Container                            -->
+    <!-------------------------------------------------------------------------->
+    <div id="main-container-data" class="mainContainer">
+        <!-------------------------------------------------------------------------->
+        <div id="mainCityContainer" class="semiTranspBlack mainCity">
+            <!-------------------------------------------------------------------------->
+            <div id="mainInputCityName" class="mainCityName">BUCUREȘTI</div>
+            <div class="empty"></div>
+            <div class="mainCityMiddle">
+                <div class="mainCityInfo">
+                    <div class="mainCityTemp">
+                        <p id="main-Temp"><sup class="mainCityDegree">°</sup></p>
+                    </div>
+                    <div class="mainCityIcon">
+                        <img id="main-IconSvg" src="/IMG/cloudy.svg" alt="">
+                    </div>
+                    <div class="mainCityDescription">
+                        <p id="main-Desc">Scattered Clouds</p>
+                    </div>
+                </div>
+                <div class="mainCityParam">
+                    <!---->
+                    <div class="mainCityTable">
+                        <!---->
+                        <div class="mainCityMinMax">
+                            <div class="mainCityMinMaxTitle">Min / Max:</div>
+                            <div id="main-MinTemp" class="mainCityMinMaxDesc">°</div>
+                            <div class="mainCityMinMaxSpace">-</div>
+                            <div id="main-MaxTemp" class="mainCityMinMaxNo">°</div>
+                            <div class="mainCityMinMaxIcon">
+                                <img src="/IMG/thermometer-celsius.svg" alt="">
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="mainCityHumi">
+                            <div class="mainCityHumiTitle">Humidity:</div>
+                            <div id="main-HumiDesc" class="mainCityHumiDesc">High</div>
+                            <div class="mainCityHumiSpace">-</div>
+                            <div id="main-HumiNo" class="mainCityHumiNo">%</div>
+                            <div class="mainCityHumiIcon">
+                                <img src="/IMG/raindrop-measure.svg" alt="">
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="mainCityWind">
+                            <div class="mainCityWindTitle">Wind:</div>
+                            <div id="main-WindDesc" class="mainCityWindDesc">N-E</div>
+                            <div class="mainCityWindSpace">-</div>
+                            <div id="main-WindSpeed" class="mainCityWindNo">0</div>
+                            <div class="mainCityWindIcon">
+                                <img src="/IMG/windsock-weak.svg" alt="">
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="mainCityUVIndex">
+                            <div class="mainCityUVIndexTitle">UV Index:</div>
+                            <div id="main-UViDesc" class="mainCityUVIndexDesc">High</div>
+                            <div class="mainCityUVIndexSpace">-</div>
+                            <div id="main-UViNo" class="mainCityUVIndexNo">0</div>
+                            <div class="mainCityUVIndexIcon">
+                                <img src="/IMG/uv-index-9.svg" alt="">
+                            </div>
+                        </div>
+                        <!---->
+                    </div>
+                    <div id="main_city_dayDate" class="mainCityDate">Monday, 23 November 2025</div>
+                    <!---->
+                </div>
+            </div>
+        </div>
+        <!-------------------------------------------------------------------------->
+        <!--                          Hourly Forecasts                            -->
+        <!-------------------------------------------------------------------------->
+        <div id="HourlyContainer" class="hourlyForecast">
+            <!-------------------------------------------------------------------------->
+            <div id="InnerContainer" class="hourWeatherSection">
+                <!-------------------------------------------------------------------------->
+                <div id="Card1" class="cards semiTranspBlack hoverBlack hourT01">
+                    <p id="hourTime01" class="hour">9:00 <small>AM</small></p>
+                    <img id="hourSvg01" class="hourT01mainSVG" src="./IMG/cloudy-day-2.svg" alt="">
+                    <p id="H-1-Desc" class="description">Clear</p>
+                    <p id="H-1-Temp" class="temp"><sup class="celsius">°</sup></p>
+                    <div class="moreSymbol">🢓</div>
+                    <!---->
+                    <div class="hourDetails">
+                        <div class="humiData">
+                            <div class="humiTitle">
+                                <p>Humidity</p>
+                            </div>
+                            <div class="humiMiddle">
+                                <div class="humiNumber">
+                                    <p id="H-1-HumiNo">85</p>
+                                </div>
+                                <div class="humiDesc">
+                                    <p id="H-1-HumiDesc">High</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="windData">
+                            <div class="windTitle">
+                                <p>Wind</p>
+                            </div>
+                            <div class="windMiddle">
+                                <div class="windNumber">
+                                    <p id="H-1-WindSpeed">11</p>
+                                </div>
+                                <div class="windDesc">
+                                    <p id="H-1-WindDesc">N-W</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="uvIndexData">
+                            <div class="uvIndexTitle">
+                                <p>UV Index</p>
+                            </div>
+                            <div class="uvIndexMiddle">
+                                <div class="uvIndexNumber">
+                                    <p id="H-1-UVi">9</p>
+                                </div>
+                                <div class="uvIndexDesc">
+                                    <p id="H-1-UViDesc">Good</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------------------------------------------------------------------->
+                <div class="cards semiTranspBlack hoverBlack hourT02">
+                    <p id="hourTime02" class="hour">10:00 <small>AM</small></p>
+                    <img id="hourSvg02" class="hourT02mainSVG" src="./IMG/cloudy-day-3.svg" alt="">
+                    <p id="H-2-Desc" class="description">Sunny</p>
+                    <p id="H-2-Temp" class="temp"><sup class="celsius">°</sup></p>
+                    <div class="moreSymbol">🢓</div>
+                    <!---->
+                    <div class="hourDetails">
+                        <div class="humiData">
+                            <div class="humiTitle">
+                                <p>Humidity</p>
+                            </div>
+                            <div class="humiMiddle">
+                                <div class="humiNumber">
+                                    <p id="H-2-HumiNo">85</p>
+                                </div>
+                                <div class="humiDesc">
+                                    <p id="H-2-HumiDesc">High</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="windData">
+                            <div class="windTitle">
+                                <p>Wind</p>
+                            </div>
+                            <div class="windMiddle">
+                                <div class="windNumber">
+                                    <p id="H-2-WindSpeed">11</p>
+                                </div>
+                                <div class="windDesc">
+                                    <p id="H-2-WindDesc">N-W</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="uvIndexData">
+                            <div class="uvIndexTitle">
+                                <p>UV Index</p>
+                            </div>
+                            <div class="uvIndexMiddle">
+                                <div class="uvIndexNumber">
+                                    <p id="H-2-UVi">9</p>
+                                </div>
+                                <div class="uvIndexDesc">
+                                    <p id="H-2-UViDesc">Good</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------------------------------------------------------------------->
+                <div class="cards semiTranspBlack hoverBlack hourT03">
+                    <p id="hourTime03" class="hour">11:00 <small>AM</small></p>
+                    <img id="hourSvg03" class="hourT02mainSVG" src="./IMG/cloudy-night-1.svg" alt="">
+                    <p id="H-3-Desc" class="description">Cloudy</p>
+                    <p id="H-3-Temp" class="temp"><sup class="celsius">°</sup></p>
+                    <div class="moreSymbol">🢓</div>
+                    <!---->
+                    <div class="hourDetails">
+                        <div class="humiData">
+                            <div class="humiTitle">
+                                <p>Humidity</p>
+                            </div>
+                            <div class="humiMiddle">
+                                <div class="humiNumber">
+                                    <p id="H-3-HumiNo">85</p>
+                                </div>
+                                <div class="humiDesc">
+                                    <p id="H-3-HumiDesc">High</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="windData">
+                            <div class="windTitle">
+                                <p>Wind</p>
+                            </div>
+                            <div class="windMiddle">
+                                <div class="windNumber">
+                                    <p id="H-3-WindSpeed">11</p>
+                                </div>
+                                <div class="windDesc">
+                                    <p id="H-3-WindDesc">N-W</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="uvIndexData">
+                            <div class="uvIndexTitle">
+                                <p>UV Index</p>
+                            </div>
+                            <div class="uvIndexMiddle">
+                                <div class="uvIndexNumber">
+                                    <p id="H-3-UVi">9</p>
+                                </div>
+                                <div class="uvIndexDesc">
+                                    <p id="H-3-UViDesc">Good</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------------------------------------------------------------------->
+                <div class="cards semiTranspBlack hoverBlack hourT04">
+                    <p id="hourTime04" class="hour">12:00 <small>PM</small></p>
+                    <img id="hourSvg04" class="hourT04mainSVG" src="./IMG/cloudy-night-2.svg" alt="">
+                    <p id="H-4-Desc" class="description">Cloudy</p>
+                    <p id="H-4-Temp" class="temp"><sup class="celsius">°</sup></p>
+                    <div class="moreSymbol">🢓</div>
+                    <!---->
+                    <div class="hourDetails">
+                        <div class="humiData">
+                            <div class="humiTitle">
+                                <p>Humidity</p>
+                            </div>
+                            <div class="humiMiddle">
+                                <div class="humiNumber">
+                                    <p id="H-4-HumiNo">85</p>
+                                </div>
+                                <div class="humiDesc">
+                                    <p id="H-4-HumiDesc">High</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="windData">
+                            <div class="windTitle">
+                                <p>Wind</p>
+                            </div>
+                            <div class="windMiddle">
+                                <div class="windNumber">
+                                    <p id="H-4-WindSpeed">11</p>
+                                </div>
+                                <div class="windDesc">
+                                    <p id="H-4-WindDesc">N-W</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="uvIndexData">
+                            <div class="uvIndexTitle">
+                                <p>UV Index</p>
+                            </div>
+                            <div class="uvIndexMiddle">
+                                <div class="uvIndexNumber">
+                                    <p id="H-4-UVi">9</p>
+                                </div>
+                                <div class="uvIndexDesc">
+                                    <p id="H-4-UViDesc">Good</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------------------------------------------------------------------->
+                <div class="cards semiTranspBlack hoverBlack hourT05">
+                    <p id="hourTime05" class="hour">1:00 <small>PM</small></p>
+                    <img id="hourSvg05" class="hourT05mainSVG" src="./IMG/cloudy-night-3.svg" alt="">
+                    <p id="H-5-Desc" class="description">Cloudy</p>
+                    <p id="H-5-Temp" class="temp"><sup class="celsius">°</sup></p>
+                    <div class="moreSymbol">🢓</div>
+                    <!---->
+                    <div class="hourDetails">
+                        <div class="humiData">
+                            <div class="humiTitle">
+                                <p>Humidity</p>
+                            </div>
+                            <div class="humiMiddle">
+                                <div class="humiNumber">
+                                    <p id="H-5-HumiNo">85</p>
+                                </div>
+                                <div class="humiDesc">
+                                    <p id="H-5-HumiDesc">High</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="windData">
+                            <div class="windTitle">
+                                <p>Wind</p>
+                            </div>
+                            <div class="windMiddle">
+                                <div class="windNumber">
+                                    <p id="H-5-WindSpeed">11</p>
+                                </div>
+                                <div class="windDesc">
+                                    <p id="H-5-WindDesc">N-W</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="uvIndexData">
+                            <div class="uvIndexTitle">
+                                <p>UV Index</p>
+                            </div>
+                            <div class="uvIndexMiddle">
+                                <div class="uvIndexNumber">
+                                    <p id="H-5-UVi">9</p>
+                                </div>
+                                <div class="uvIndexDesc">
+                                    <p id="H-5-UViDesc">Good</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------------------------------------------------------------------->
+                <div class="cards semiTranspBlack hoverBlack hourT06">
+                    <p id="hourTime06" class="hour">2:00 <small>PM</small></p>
+                    <img id="hourSvg06" class="hourT06mainSVG" src="./IMG/cloudy.svg" alt="">
+                    <p id="H-6-Desc" class="description">Cloudy</p>
+                    <p id="H-6-Temp" class="temp"><sup class="celsius">°</sup></p>
+                    <div class="moreSymbol">🢓</div>
+                    <!---->
+                    <div class="hourDetails">
+                        <div class="humiData">
+                            <div class="humiTitle">
+                                <p>Humidity</p>
+                            </div>
+                            <div class="humiMiddle">
+                                <div class="humiNumber">
+                                    <p id="H-6-HumiNo">85</p>
+                                </div>
+                                <div class="humiDesc">
+                                    <p id="H-6-HumiDesc">High</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="windData">
+                            <div class="windTitle">
+                                <p>Wind</p>
+                            </div>
+                            <div class="windMiddle">
+                                <div class="windNumber">
+                                    <p id="H-6-WindSpeed">11</p>
+                                </div>
+                                <div class="windDesc">
+                                    <p id="H-6-WindDesc">N-W</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="uvIndexData">
+                            <div class="uvIndexTitle">
+                                <p>UV Index</p>
+                            </div>
+                            <div class="uvIndexMiddle">
+                                <div class="uvIndexNumber">
+                                    <p id="H-6-UVi">9</p>
+                                </div>
+                                <div class="uvIndexDesc">
+                                    <p id="H-6-UViDesc">Good</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------------------------------------------------------------------->
+                <div class="cards semiTranspBlack hoverBlack hourT07">
+                    <p id="hourTime07" class="hour">3:00 <small>PM</small></p>
+                    <img id="hourSvg07" class="hourT07mainSVG" src="./IMG/day.svg" alt="">
+                    <p id="H-7-Desc" class="description">Sunny</p>
+                    <p id="H-7-Temp" class="temp"><sup class="celsius">°</sup></p>
+                    <div class="moreSymbol">🢓</div>
+                    <!---->
+                    <div class="hourDetails">
+                        <div class="humiData">
+                            <div class="humiTitle">
+                                <p>Humidity</p>
+                            </div>
+                            <div class="humiMiddle">
+                                <div class="humiNumber">
+                                    <p id="H-7-HumiNo">85</p>
+                                </div>
+                                <div class="humiDesc">
+                                    <p id="H-7-HumiDesc">High</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="windData">
+                            <div class="windTitle">
+                                <p>Wind</p>
+                            </div>
+                            <div class="windMiddle">
+                                <div class="windNumber">
+                                    <p id="H-7-WindSpeed">11</p>
+                                </div>
+                                <div class="windDesc">
+                                    <p id="H-7-WindDesc">N-W</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="uvIndexData">
+                            <div class="uvIndexTitle">
+                                <p>UV Index</p>
+                            </div>
+                            <div class="uvIndexMiddle">
+                                <div class="uvIndexNumber">
+                                    <p id="H-7-UVi">9</p>
+                                </div>
+                                <div class="uvIndexDesc">
+                                    <p id="H-7-UViDesc">Good</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------------------------------------------------------------------->
+                <div class="cards semiTranspBlack hoverBlack hourT08">
+                    <p id="hourTime08" class="hour">4:00 <small>PM</small></p>
+                    <img id="hourSvg08" class="hourT08mainSVG" src="./IMG/night.svg" alt="">
+                    <p id="H-8-Desc" class="description">Clear</p>
+                    <p id="H-8-Temp" class="temp"><sup class="celsius">°</sup></p>
+                    <div class="moreSymbol">🢓</div>
+                    <!---->
+                    <div class="hourDetails">
+                        <div class="humiData">
+                            <div class="humiTitle">
+                                <p>Humidity</p>
+                            </div>
+                            <div class="humiMiddle">
+                                <div class="humiNumber">
+                                    <p id="H-8-HumiNo">85</p>
+                                </div>
+                                <div class="humiDesc">
+                                    <p id="H-8-HumiDesc">High</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="windData">
+                            <div class="windTitle">
+                                <p>Wind</p>
+                            </div>
+                            <div class="windMiddle">
+                                <div class="windNumber">
+                                    <p id="H-8-WindSpeed">11</p>
+                                </div>
+                                <div class="windDesc">
+                                    <p id="H-8-WindDesc">N-W</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="uvIndexData">
+                            <div class="uvIndexTitle">
+                                <p>UV Index</p>
+                            </div>
+                            <div class="uvIndexMiddle">
+                                <div class="uvIndexNumber">
+                                    <p id="H-8-UVi">9</p>
+                                </div>
+                                <div class="uvIndexDesc">
+                                    <p id="H-8-UViDesc">Good</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------------------------------------------------------------------->
+                <div class="cards semiTranspBlack hoverBlack hourT09">
+                    <p id="hourTime09" class="hour">5:09 <small>PM</small></p>
+                    <img id="hourSvg09" class="hourT09mainSVG" src="./IMG/rainy-1.svg" alt="">
+                    <p id="H-9-Desc" class="description">Scattered Clouds</p>
+                    <p id="H-9-Temp" class="temp">28<sup class="celsius">°</sup></p>
+                    <div class="moreSymbol">🢓</div>
+                    <!---->
+                    <div class="hourDetails">
+                        <div class="humiData">
+                            <div class="humiTitle">
+                                <p>Humidity</p>
+                            </div>
+                            <div class="humiMiddle">
+                                <div class="humiNumber">
+                                    <p id="H-9-HumiNo">85</p>
+                                </div>
+                                <div class="humiDesc">
+                                    <p id="H-9-HumiDesc">High</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="windData">
+                            <div class="windTitle">
+                                <p>Wind</p>
+                            </div>
+                            <div class="windMiddle">
+                                <div class="windNumber">
+                                    <p id="H-9-WindSpeed">11</p>
+                                </div>
+                                <div class="windDesc">
+                                    <p id="H-9-WindDesc">N-W</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="uvIndexData">
+                            <div class="uvIndexTitle">
+                                <p>UV Index</p>
+                            </div>
+                            <div class="uvIndexMiddle">
+                                <div class="uvIndexNumber">
+                                    <p id="H-9-UVi">9</p>
+                                </div>
+                                <div class="uvIndexDesc">
+                                    <p id="H-9-UViDesc">Good</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------------------------------------------------------------------->
+                <div class="cards semiTranspBlack hoverBlack hourT10">
+                    <p id="hourTime10" class="hour">6:10 <small>PM</small></p>
+                    <img id="hourSvg10" class="hourT10mainSVG" src="./IMG/rainy-2.svg" alt="">
+                    <p id="H-10-Desc" class="description">Partially Cloudy</p>
+                    <p id="H-10-Temp" class="temp">6<sup class="celsius">°</sup></p>
+                    <div class="moreSymbol">🢓</div>
+                    <!---->
+                    <div class="hourDetails">
+                        <div class="humiData">
+                            <div class="humiTitle">
+                                <p>Humidity</p>
+                            </div>
+                            <div class="humiMiddle">
+                                <div class="humiNumber">
+                                    <p id="H-10-HumiNo">85</p>
+                                </div>
+                                <div class="humiDesc">
+                                    <p id="H-10-HumiDesc">High</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="windData">
+                            <div class="windTitle">
+                                <p>Wind</p>
+                            </div>
+                            <div class="windMiddle">
+                                <div class="windNumber">
+                                    <p id="H-10-WindSpeed">11</p>
+                                </div>
+                                <div class="windDesc">
+                                    <p id="H-10-WindDesc">N-W</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="uvIndexData">
+                            <div class="uvIndexTitle">
+                                <p>UV Index</p>
+                            </div>
+                            <div class="uvIndexMiddle">
+                                <div class="uvIndexNumber">
+                                    <p id="H-10-UVi">9</p>
+                                </div>
+                                <div class="uvIndexDesc">
+                                    <p id="H-10-UViDesc">Good</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------------------------------------------------------------------->
+                <div class="cards semiTranspBlack hoverBlack hourT11">
+                    <p id="hourTime11" class="hour">6:00 <small>PM</small></p>
+                    <img id="hourSvg11" class="hourT10mainSVG" src="./IMG/rainy-2.svg" alt="">
+                    <p id="H-11-Desc" class="description">Cloudy</p>
+                    <p id="H-11-Temp" class="temp">6<sup class="celsius">°</sup></p>
+                    <div class="moreSymbol">🢓</div>
+                    <!---->
+                    <div class="hourDetails">
+                        <div class="humiData">
+                            <div class="humiTitle">
+                                <p>Humidity</p>
+                            </div>
+                            <div class="humiMiddle">
+                                <div class="humiNumber">
+                                    <p id="H-11-HumiNo">85</p>
+                                </div>
+                                <div class="humiDesc">
+                                    <p id="H-11-HumiDesc">High</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="windData">
+                            <div class="windTitle">
+                                <p>Wind</p>
+                            </div>
+                            <div class="windMiddle">
+                                <div class="windNumber">
+                                    <p id="H-11-WindSpeed">11</p>
+                                </div>
+                                <div class="windDesc">
+                                    <p id="H-11-WindDesc">N-W</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="uvIndexData">
+                            <div class="uvIndexTitle">
+                                <p>UV Index</p>
+                            </div>
+                            <div class="uvIndexMiddle">
+                                <div class="uvIndexNumber">
+                                    <p id="H-11-UVi">9</p>
+                                </div>
+                                <div class="uvIndexDesc">
+                                    <p id="H-11-UViDesc">Good</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------------------------------------------------------------------->
+                <div class="cards semiTranspBlack hoverBlack hourT12">
+                    <p id="hourTime12" class="hour">6:00 <small>PM</small></p>
+                    <img id="hourSvg12" class="hourT10mainSVG" src="./IMG/rainy-2.svg" alt="">
+                    <p id="H-12-Desc" class="description">Cloudy</p>
+                    <p id="H-12-Temp" class="temp">6<sup class="celsius">°</sup></p>
+                    <div class="moreSymbol">🢓</div>
+                    <!---->
+                    <div class="hourDetails">
+                        <div class="humiData">
+                            <div class="humiTitle">
+                                <p>Humidity</p>
+                            </div>
+                            <div class="humiMiddle">
+                                <div class="humiNumber">
+                                    <p id="H-12-HumiNo">85</p>
+                                </div>
+                                <div class="humiDesc">
+                                    <p id="H-12-HumiDesc">High</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="windData">
+                            <div class="windTitle">
+                                <p>Wind</p>
+                            </div>
+                            <div class="windMiddle">
+                                <div class="windNumber">
+                                    <p id="H-12-WindSpeed">11</p>
+                                </div>
+                                <div class="windDesc">
+                                    <p id="H-12-WindDesc">N-W</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="uvIndexData">
+                            <div class="uvIndexTitle">
+                                <p>UV Index</p>
+                            </div>
+                            <div class="uvIndexMiddle">
+                                <div class="uvIndexNumber">
+                                    <p id="H-12-UVi">9</p>
+                                </div>
+                                <div class="uvIndexDesc">
+                                    <p id="H-12-UViDesc">Good</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------------------------------------------------------------------->
+                <div class="cards semiTranspBlack hoverBlack hourT13">
+                    <p id="hourTime13" class="hour">6:00 <small>PM</small></p>
+                    <img id="hourSvg13" class="hourT10mainSVG" src="./IMG/rainy-2.svg" alt="">
+                    <p id="H-13-Desc" class="description">Cloudy</p>
+                    <p id="H-13-Temp" class="temp">6<sup class="celsius">°</sup></p>
+                    <div class="moreSymbol">🢓</div>
+                    <!---->
+                    <div class="hourDetails">
+                        <div class="humiData">
+                            <div class="humiTitle">
+                                <p>Humidity</p>
+                            </div>
+                            <div class="humiMiddle">
+                                <div class="humiNumber">
+                                    <p id="H-13-HumiNo">85</p>
+                                </div>
+                                <div class="humiDesc">
+                                    <p id="H-13-HumiDesc">High</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="windData">
+                            <div class="windTitle">
+                                <p>Wind</p>
+                            </div>
+                            <div class="windMiddle">
+                                <div class="windNumber">
+                                    <p id="H-13-WindSpeed">11</p>
+                                </div>
+                                <div class="windDesc">
+                                    <p id="H-13-WindDesc">N-W</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="uvIndexData">
+                            <div class="uvIndexTitle">
+                                <p>UV Index</p>
+                            </div>
+                            <div class="uvIndexMiddle">
+                                <div class="uvIndexNumber">
+                                    <p id="H-13-UVi">9</p>
+                                </div>
+                                <div class="uvIndexDesc">
+                                    <p id="H-13-UViDesc">Good</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------------------------------------------------------------------->
+                <div class="cards semiTranspBlack hoverBlack hourT14">
+                    <p id="hourTime14" class="hour">6:00 <small>PM</small></p>
+                    <img id="hourSvg14" class="hourT10mainSVG" src="./IMG/rainy-2.svg" alt="">
+                    <p id="H-14-Desc" class="description">Cloudy</p>
+                    <p id="H-14-Temp" class="temp">6<sup class="celsius">°</sup></p>
+                    <div class="moreSymbol">🢓</div>
+                    <!---->
+                    <div class="hourDetails">
+                        <div class="humiData">
+                            <div class="humiTitle">
+                                <p>Humidity</p>
+                            </div>
+                            <div class="humiMiddle">
+                                <div class="humiNumber">
+                                    <p id="H-14-HumiNo">85</p>
+                                </div>
+                                <div class="humiDesc">
+                                    <p id="H-14-HumiDesc">High</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="windData">
+                            <div class="windTitle">
+                                <p>Wind</p>
+                            </div>
+                            <div class="windMiddle">
+                                <div class="windNumber">
+                                    <p id="H-14-WindSpeed">11</p>
+                                </div>
+                                <div class="windDesc">
+                                    <p id="H-14-WindDesc">N-W</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="uvIndexData">
+                            <div class="uvIndexTitle">
+                                <p>UV Index</p>
+                            </div>
+                            <div class="uvIndexMiddle">
+                                <div class="uvIndexNumber">
+                                    <p id="H-14-UVi">9</p>
+                                </div>
+                                <div class="uvIndexDesc">
+                                    <p id="H-14-UViDesc">Good</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------------------------------------------------------------------->
+                <div class="cards semiTranspBlack hoverBlack hourT15">
+                    <p id="hourTime15" class="hour">6:00 <small>PM</small></p>
+                    <img id="hourSvg15" class="hourT10mainSVG" src="./IMG/rainy-2.svg" alt="">
+                    <p id="H-15-Desc" class="description">Cloudy</p>
+                    <p id="H-15-Temp" class="temp">6<sup class="celsius">°</sup></p>
+                    <div class="moreSymbol">🢓</div>
+                    <!---->
+                    <div class="hourDetails">
+                        <div class="humiData">
+                            <div class="humiTitle">
+                                <p>Humidity</p>
+                            </div>
+                            <div class="humiMiddle">
+                                <div class="humiNumber">
+                                    <p id="H-15-HumiNo">85</p>
+                                </div>
+                                <div class="humiDesc">
+                                    <p id="H-15-HumiDesc">High</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="windData">
+                            <div class="windTitle">
+                                <p>Wind</p>
+                            </div>
+                            <div class="windMiddle">
+                                <div class="windNumber">
+                                    <p id="H-15-WindSpeed">11</p>
+                                </div>
+                                <div class="windDesc">
+                                    <p id="H-15-WindDesc">N-W</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="uvIndexData">
+                            <div class="uvIndexTitle">
+                                <p>UV Index</p>
+                            </div>
+                            <div class="uvIndexMiddle">
+                                <div class="uvIndexNumber">
+                                    <p id="H-15-UVi">9</p>
+                                </div>
+                                <div class="uvIndexDesc">
+                                    <p id="H-15-UViDesc">Good</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------------------------------------------------------------------->
+                <div class="cards semiTranspBlack hoverBlack hourT16">
+                    <p id="hourTime16" class="hour">6:00 <small>PM</small></p>
+                    <img id="hourSvg16" class="hourT10mainSVG" src="./IMG/rainy-2.svg" alt="">
+                    <p id="H-16-Desc" class="description">Cloudy</p>
+                    <p id="H-16-Temp" class="temp">6<sup class="celsius">°</sup></p>
+                    <div class="moreSymbol">🢓</div>
+                    <!---->
+                    <div class="hourDetails">
+                        <div class="humiData">
+                            <div class="humiTitle">
+                                <p>Humidity</p>
+                            </div>
+                            <div class="humiMiddle">
+                                <div class="humiNumber">
+                                    <p id="H-16-HumiNo">85</p>
+                                </div>
+                                <div class="humiDesc">
+                                    <p id="H-16-HumiDesc">High</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="windData">
+                            <div class="windTitle">
+                                <p>Wind</p>
+                            </div>
+                            <div class="windMiddle">
+                                <div class="windNumber">
+                                    <p id="H-16-WindSpeed">11</p>
+                                </div>
+                                <div class="windDesc">
+                                    <p id="H-16-WindDesc">N-W</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="uvIndexData">
+                            <div class="uvIndexTitle">
+                                <p>UV Index</p>
+                            </div>
+                            <div class="uvIndexMiddle">
+                                <div class="uvIndexNumber">
+                                    <p id="H-16-UVi">9</p>
+                                </div>
+                                <div class="uvIndexDesc">
+                                    <p id="H-16-UViDesc">Good</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-------------------------------------------------------------------------->
+        <!--                           Daily Forecasts                            -->
+        <!-------------------------------------------------------------------------->
+        <div class="semiTranspBlack dailyForecast">
+            <!-------------------------------------------------------------------------->
+            <div class="dayT1">
+                <div class="dailyBorder"></div>
+                <div id="D-1-Date" class="dailyDate">Tuesday</div>
+                <div class="dailyIcon">
+                    <img id="dailySvgT1" class="dailyIconT1" src="/IMG/cloudy-day-2.svg" alt="">
+                </div>
+                <p id="D-1-Desc" class="dayDesc">Overcast<br>Clouds</p>
+                <div id="D-1-MinTemp" class="minTempT1">14°</div>
+                <div class="tempBar">
+                    <div id="D-1-Bp-0" class="tempBarPart0 D-1-Selector tempBarSegment"></div>
+                    <div id="D-1-Bp-1" class="tempBarPart1 D-1-Selector tempBarSegment"></div>
+                    <div id="D-1-Bp-2" class="tempBarPart2 D-1-Selector tempBarSegment"></div>
+                    <div id="D-1-Bp-3" class="tempBarPart3 D-1-Selector tempBarSegment"></div>
+                    <div id="D-1-Bp-4" class="tempBarPart4 D-1-Selector tempBarSegment"></div>
+                    <div id="D-1-Bp-5" class="tempBarPart5 D-1-Selector tempBarSegment"></div>
+                    <div id="D-1-Bp-6" class="tempBarPart6 D-1-Selector tempBarSegment"></div>
+                    <div id="D-1-Bp-7" class="tempBarPart7 D-1-Selector tempBarSegment"></div>
+                    <div id="D-1-Bp-8" class="tempBarPart8 D-1-Selector tempBarSegment"></div>
+                    <div id="D-1-Bp-9" class="tempBarPart9 D-1-Selector tempBarSegment"></div>
+                </div>
+                <div id="D-1-MaxTemp" class="maxTempT1">24°</div>
+            </div>
+            <!-------------------------------------------------------------------------->
+            <div class="dayT2">
+                <div class="dailyBorder"></div>
+                <div id="D-2-Date" class="dailyDate">Wednesday</div>
+                <div class="dailyIcon">
+                    <img id="dailySvgT2" class="dailyIconT2" src="/IMG/cloudy-night-1.svg" alt="">
+                </div>
+                <div id="D-2-Desc" class="dayDesc">Moderate<br>Rain</div>
+                <div id="D-2-MinTemp" class="minTempT2">1°</div>
+                <div class="tempBar">
+                    <div id="D-2-Bp-0" class="tempBarPart0 D-2-Selector tempBarSegment"></div>
+                    <div id="D-2-Bp-1" class="tempBarPart1 D-2-Selector tempBarSegment"></div>
+                    <div id="D-2-Bp-2" class="tempBarPart2 D-2-Selector tempBarSegment"></div>
+                    <div id="D-2-Bp-3" class="tempBarPart3 D-2-Selector tempBarSegment"></div>
+                    <div id="D-2-Bp-4" class="tempBarPart4 D-2-Selector tempBarSegment"></div>
+                    <div id="D-2-Bp-5" class="tempBarPart5 D-2-Selector tempBarSegment"></div>
+                    <div id="D-2-Bp-6" class="tempBarPart6 D-2-Selector tempBarSegment"></div>
+                    <div id="D-2-Bp-7" class="tempBarPart7 D-2-Selector tempBarSegment"></div>
+                    <div id="D-2-Bp-8" class="tempBarPart8 D-2-Selector tempBarSegment"></div>
+                    <div id="D-2-Bp-9" class="tempBarPart9 D-2-Selector tempBarSegment"></div>
+                </div>
+                <div id="D-2-MaxTemp" class="maxTempT2">4°</div>
+            </div>
+            <!-------------------------------------------------------------------------->
+            <div class="dayT3">
+                <div class="dailyBorder"></div>
+                <div id="D-3-Date" class="dailyDate">Thursday</div>
+                <div class="dailyIcon">
+                    <img id="dailySvgT3" class="dailyIconT3" src="/IMG/cloudy-day-3.svg" alt="">
+                </div>
+                <div id="D-3-Desc" class="dayDesc">Broken<br>Clouds</div>
+                <div id="D-3-MinTemp" class="minTempT3">-14°</div>
+                <div class="tempBar">
+                    <div id="D-3-Bp-0" class="tempBarPart0 D-3-Selector tempBarSegment"></div>
+                    <div id="D-3-Bp-1" class="tempBarPart1 D-3-Selector tempBarSegment"></div>
+                    <div id="D-3-Bp-2" class="tempBarPart2 D-3-Selector tempBarSegment"></div>
+                    <div id="D-3-Bp-3" class="tempBarPart3 D-3-Selector tempBarSegment"></div>
+                    <div id="D-3-Bp-4" class="tempBarPart4 D-3-Selector tempBarSegment"></div>
+                    <div id="D-3-Bp-5" class="tempBarPart5 D-3-Selector tempBarSegment"></div>
+                    <div id="D-3-Bp-6" class="tempBarPart6 D-3-Selector tempBarSegment"></div>
+                    <div id="D-3-Bp-7" class="tempBarPart7 D-3-Selector tempBarSegment"></div>
+                    <div id="D-3-Bp-8" class="tempBarPart8 D-3-Selector tempBarSegment"></div>
+                    <div id="D-3-Bp-9" class="tempBarPart9 D-3-Selector tempBarSegment"></div>
+                </div>
+                <div id="D-3-MaxTemp" class="maxTempT3">0°</div>
+            </div>
+            <!-------------------------------------------------------------------------->
+            <div class="dayT4">
+                <div class="dailyBorder"></div>
+                <div id="D-4-Date" class="dailyDate">Friday</div>
+                <div class="dailyIcon">
+                    <img id="dailySvgT4" class="dailyIconT4" src="/IMG/rainy-2.svg" alt="">
+                </div>
+                <div id="D-4-Desc" class="dayDesc">Few<br>Clouds</div>
+                <div id="D-4-MinTemp" class="minTempT4">4°</div>
+                <div class="tempBar">
+                    <div id="D-4-Bp-0" class="tempBarPart0 D-4-Selector tempBarSegment"></div>
+                    <div id="D-4-Bp-1" class="tempBarPart1 D-4-Selector tempBarSegment"></div>
+                    <div id="D-4-Bp-2" class="tempBarPart2 D-4-Selector tempBarSegment"></div>
+                    <div id="D-4-Bp-3" class="tempBarPart3 D-4-Selector tempBarSegment"></div>
+                    <div id="D-4-Bp-4" class="tempBarPart4 D-4-Selector tempBarSegment"></div>
+                    <div id="D-4-Bp-5" class="tempBarPart5 D-4-Selector tempBarSegment"></div>
+                    <div id="D-4-Bp-6" class="tempBarPart6 D-4-Selector tempBarSegment"></div>
+                    <div id="D-4-Bp-7" class="tempBarPart7 D-4-Selector tempBarSegment"></div>
+                    <div id="D-4-Bp-8" class="tempBarPart8 D-4-Selector tempBarSegment"></div>
+                    <div id="D-4-Bp-9" class="tempBarPart9 D-4-Selector tempBarSegment"></div>
+                </div>
+                <div id="D-4-MaxTemp" class="maxTempT4">11°</div>
+            </div>
+            <!-------------------------------------------------------------------------->
+            <div class="dayT5">
+                <div class="dailyBorder"></div>
+                <div id="D-5-Date" class="dailyDate">Saturday</div>
+                <div class="dailyIcon">
+                    <img id="dailySvgT5" class="dailyIconT5" src="/IMG/rainy-7.svg" alt="">
+                </div>
+                <div id="D-5-Desc" class="dayDesc">Scattered<br>Clouds</div>
+                <div id="D-5-MinTemp" class="minTempT5">-2°</div>
+                <div class="tempBar">
+                    <div id="D-5-Bp-0" class="tempBarPart0 D-5-Selector tempBarSegment"></div>
+                    <div id="D-5-Bp-1" class="tempBarPart1 D-5-Selector tempBarSegment"></div>
+                    <div id="D-5-Bp-2" class="tempBarPart2 D-5-Selector tempBarSegment"></div>
+                    <div id="D-5-Bp-3" class="tempBarPart3 D-5-Selector tempBarSegment"></div>
+                    <div id="D-5-Bp-4" class="tempBarPart4 D-5-Selector tempBarSegment"></div>
+                    <div id="D-5-Bp-5" class="tempBarPart5 D-5-Selector tempBarSegment"></div>
+                    <div id="D-5-Bp-6" class="tempBarPart6 D-5-Selector tempBarSegment"></div>
+                    <div id="D-5-Bp-7" class="tempBarPart7 D-5-Selector tempBarSegment"></div>
+                    <div id="D-5-Bp-8" class="tempBarPart8 D-5-Selector tempBarSegment"></div>
+                    <div id="D-5-Bp-9" class="tempBarPart9 D-5-Selector tempBarSegment"></div>
+                </div>
+                <div id="D-5-MaxTemp" class="maxTempT5">6°</div>
+            </div>
+            <!-------------------------------------------------------------------------->
+            <div class="dayT6">
+                <div id="D-6-Date" class="dailyDate">Sunday</div>
+                <div class="dailyIcon">
+                    <img id="dailySvgT6" class="dailyIconT6" src="/IMG/rainy-1.svg" alt="">
+                </div>
+                <div id="D-6-Desc" class="dayDesc">Light<br>Rain</div>
+                <div id="D-6-MinTemp" class="minTempT6">-23°</div>
+                <div class="tempBar">
+                    <div id="D-6-Bp-0" class="tempBarPart0 D-6-Selector tempBarSegment"></div>
+                    <div id="D-6-Bp-1" class="tempBarPart1 D-6-Selector tempBarSegment"></div>
+                    <div id="D-6-Bp-2" class="tempBarPart2 D-6-Selector tempBarSegment"></div>
+                    <div id="D-6-Bp-3" class="tempBarPart3 D-6-Selector tempBarSegment"></div>
+                    <div id="D-6-Bp-4" class="tempBarPart4 D-6-Selector tempBarSegment"></div>
+                    <div id="D-6-Bp-5" class="tempBarPart5 D-6-Selector tempBarSegment"></div>
+                    <div id="D-6-Bp-6" class="tempBarPart6 D-6-Selector tempBarSegment"></div>
+                    <div id="D-6-Bp-7" class="tempBarPart7 D-6-Selector tempBarSegment"></div>
+                    <div id="D-6-Bp-8" class="tempBarPart8 D-6-Selector tempBarSegment"></div>
+                    <div id="D-6-Bp-9" class="tempBarPart9 D-6-Selector tempBarSegment"></div>
+                </div>
+                <div id="D-6-MaxTemp" class="maxTempT6">2°</div>
+            </div>
+        </div>
+        <!-------------------------------------------------------------------------->
+        <!--                            Nearby Cities                             -->
+        <!-------------------------------------------------------------------------->
+        <div class="nearbyCities">
+            <!-------------------------------------------------------------------------->
+            <div id="nearCity1Search" class="hoverBlack semiTranspBlack nearCity1">
+                <div id="N-1-Name" class="nearCityName">Mogosoaia</div>
+                <div class="empty"></div>
+                <div class="nearCityMiddle">
+                    <!---->
+                    <div class="nearCityInfo">
+                        <div class="nearCityTemp">
+                            <p id="N-1-Temp">14<sup class="nearCityDegree">°</sup></p>
+                        </div>
+                        <div class="nearCityIcon">
+                            <img id="N-1-IconSvg" src="/IMG/rainy-3.svg" alt="">
+                        </div>
+                        <div class="nearCityDescription">
+                            <p id="N-1-Desc">Rain</p>
+                        </div>
+                    </div>
+                    <!---->
+                    <div class="nearCityParam">
+                        <div class="nearCityTable">
+                            <!---->
+                            <div class="nearCityMinMax">
+                                <div id="N-1-MinTemp" class="nearCityMinTemp">14°</div>
+                                <div class="nearCityMinMaxSpace">-</div>
+                                <div id="N-1-MaxTemp" class="nearCityMaxTemp">24°</div>
+                                <div class="nearCityMinMaxIcon">
+                                    <img src="/IMG/thermometer-celsius.svg" alt="">
+                                </div>
+                            </div>
+                            <!---->
+                            <div class="nearCityHumi">
+                                <div id="N-1-HumiDesc" class="nearCityHumiDesc">High</div>
+                                <div class="nearCityHumiSpace">-</div>
+                                <div id="N-1-HumiNo" class="nearCityHumiNo">85%</div>
+                                <div class="nearCityHumiIcon">
+                                    <img src="/IMG/raindrop-measure.svg" alt="">
+                                </div>
+                            </div>
+                            <!---->
+                            <div class="nearCityWind">
+                                <div id="N-1-WindDesc" class="nearCityWindDesc">N-E</div>
+                                <div class="nearCityWindSpace">-</div>
+                                <div id="N-1-WindSpeed" class="nearCityWindNo">11.6</div>
+                                <div class="nearCityWindIcon">
+                                    <img src="/IMG/windsock-weak.svg" alt="">
+                                </div>
+                            </div>
+                            <!---->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-------------------------------------------------------------------------->
+            <div id="nearCity2Search" class="hoverBlack semiTranspBlack nearCity2">
+                <div id="N-2-Name" class="nearCityName">Voluntari</div>
+                <div class="empty"></div>
+                <div class="nearCityMiddle">
+                    <!---->
+                    <div class="nearCityInfo">
+                        <div class="nearCityTemp">
+                            <p id="N-2-Temp">6</p>
+                        </div>
+                        <div class="nearCityIcon">
+                            <img id="N-2-IconSvg" src="/IMG/cloudy.svg" alt="">
+                        </div>
+                        <div class="nearCityDescription">
+                            <p id="N-2-Desc">Cloudy</p>
+                        </div>
+                    </div>
+                    <!---->
+                    <div class="nearCityParam">
+                        <div class="nearCityTable">
+                            <!---->
+                            <div class="nearCityMinMax">
+                                <div id="N-2-MinTemp" class="nearCityMinTemp">4°</div>
+                                <div class="nearCityMinMaxSpace">-</div>
+                                <div id="N-2-MaxTemp" class="nearCityMaxTemp">9°</div>
+                                <div class="nearCityMinMaxIcon">
+                                    <img src="/IMG/thermometer-celsius.svg" alt="">
+                                </div>
+                            </div>
+                            <!---->
+                            <div class="nearCityHumi">
+                                <div id="N-2-HumiDesc" class="nearCityHumiDesc">High</div>
+                                <div class="nearCityHumiSpace">-</div>
+                                <div id="N-2-HumiNo" class="nearCityHumiNo">95%</div>
+                                <div class="nearCityHumiIcon">
+                                    <img src="/IMG/raindrop-measure.svg" alt="">
+                                </div>
+                            </div>
+                            <!---->
+                            <div class="nearCityWind">
+                                <div id="N-2-WindDesc" class="nearCityWindDesc">E</div>
+                                <div class="nearCityWindSpace">-</div>
+                                <div id="N-2-WindSpeed" class="nearCityWindNo">3.2</div>
+                                <div class="nearCityWindIcon">
+                                    <img src="/IMG/windsock-weak.svg" alt="">
+                                </div>
+                            </div>
+                            <!---->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-------------------------------------------------------------------------->
+            <div id="nearCity3Search" class="hoverBlack semiTranspBlack nearCity3">
+                <div id="N-3-Name" class="nearCityName">Popesti-Leordeni</div>
+                <div class="empty"></div>
+                <div class="nearCityMiddle">
+                    <!---->
+                    <div class="nearCityInfo">
+                        <div class="nearCityTemp">
+                            <p id="N-3-Temp">11</p>
+                        </div>
+                        <div class="nearCityIcon">
+                            <img id="N-3-IconSvg" src="/IMG/cloudy-day-2.svg" alt="">
+                        </div>
+                        <div class="nearCityDescription">
+                            <p id="N-3-Desc">Sunny</p>
+                        </div>
+                    </div>
+                    <!---->
+                    <div class="nearCityParam">
+                        <div class="nearCityTable">
+                            <!---->
+                            <div class="nearCityMinMax">
+                                <div id="N-3-MinTemp" class="nearCityMinTemp">14°</div>
+                                <div class="nearCityMinMaxSpace">-</div>
+                                <div id="N-3-MaxTemp" class="nearCityMaxTemp">17°</div>
+                                <div class="nearCityMinMaxIcon">
+                                    <img src="/IMG/thermometer-celsius.svg" alt="">
+                                </div>
+                            </div>
+                            <!---->
+                            <div class="nearCityHumi">
+                                <div id="N-3-HumiDesc" class="nearCityHumiDesc">Low</div>
+                                <div class="nearCityHumiSpace">-</div>
+                                <div id="N-3-HumiNo" class="nearCityHumiNo">35%</div>
+                                <div class="nearCityHumiIcon">
+                                    <img src="/IMG/raindrop-measure.svg" alt="">
+                                </div>
+                            </div>
+                            <!---->
+                            <div class="nearCityWind">
+                                <div id="N-3-WindDesc" class="nearCityWindDesc">S-E</div>
+                                <div class="nearCityWindSpace">-</div>
+                                <div id="N-3-WindSpeed" class="nearCityWindNo">4.7</div>
+                                <div class="nearCityWindIcon">
+                                    <img src="/IMG/windsock-weak.svg" alt="">
+                                </div>
+                            </div>
+                            <!---->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-------------------------------------------------------------------------->
+            <div id="nearCity4Search" class="hoverBlack semiTranspBlack nearCity4">
+                <div id="N-4-Name" class="nearCityName">Tunari</div>
+                <div class="empty"></div>
+                <div class="nearCityMiddle">
+                    <!---->
+                    <div class="nearCityInfo">
+                        <div class="nearCityTemp">
+                            <p id="N-4-Temp">-1</p>
+                        </div>
+                        <div class="nearCityIcon">
+                            <img id="N-4-IconSvg" src="/IMG/snowy-3.svg" alt="">
+                        </div>
+                        <div class="nearCityDescription">
+                            <p id="N-4-Desc">Snowy</p>
+                        </div>
+                    </div>
+                    <!---->
+                    <div class="nearCityParam">
+                        <div class="nearCityTable">
+                            <!---->
+                            <div class="nearCityMinMax">
+                                <div id="N-4-MinTemp" class="nearCityMinTemp">-2°</div>
+                                <div class="nearCityMinMaxSpace">-</div>
+                                <div id="N-4-MaxTemp" class="nearCityMaxTemp">4°</div>
+                                <div class="nearCityMinMaxIcon">
+                                    <img src="/IMG/thermometer-celsius.svg" alt="">
+                                </div>
+                            </div>
+                            <!---->
+                            <div class="nearCityHumi">
+                                <div id="N-4-HumiDesc" class="nearCityHumiDesc">Good</div>
+                                <div class="nearCityHumiSpace">-</div>
+                                <div id="N-4-HumiNo" class="nearCityHumiNo">65%</div>
+                                <div class="nearCityHumiIcon">
+                                    <img src="/IMG/raindrop-measure.svg" alt="">
+                                </div>
+                            </div>
+                            <!---->
+                            <div class="nearCityWind">
+                                <div id="N-4-WindDesc" class="nearCityWindDesc">S-W</div>
+                                <div class="nearCityWindSpace">-</div>
+                                <div id="N-4-WindSpeed" class="nearCityWindNo">2.2</div>
+                                <div class="nearCityWindIcon">
+                                    <img src="/IMG/windsock-weak.svg" alt="">
+                                </div>
+                            </div>
+                            <!---->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-------------------------------------------------------------------------->
+        <!--                              Windy Maps                              -->
+        <!-------------------------------------------------------------------------->
+        <div class="semiTranspBlack weatherMap">
+            <div class="mapMenu">
+                <div id="windButton" class="mapWind">Temp</div>
+                <div id="tempButton" class="mapHumi">Rain</div>
+                <div id="rainButton" class="mapRain">Wind</div>
+                <div id="cloudsButton" class="mapUnits">UV Index</div>
+            </div>
+            <div class="mapiframe">
+                <div class="iframeShadow"></div>
+                <iframe id="WindyMap" class="map" src="https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=mm&metricTemp=°C&metricWind=km/h&zoom=7&overlay=temp&product=ecmwf&level=surface&lat=44.4361414&lon=26.1027202&pressure=true&message=true" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+    <!-------------------------------------------------------------------------->
+    <!--                              Resources                               -->
+    <!-------------------------------------------------------------------------->
+    <div class="resourcesSpace">
+        <a id="photo-by" class="photoBy" href="https://unsplash.com/photos/a-boat-is-on-the-water-in-front-of-a-mountain-Rjh78If2DNQ" target="_blank">Photo by Pascal Debrunner</a>
+        <a class="resourcesPage" href="/resourcesPage.html" target="_blank">Resources</a>
+    </div>
+    <!-------------------------------------------------------------------------->
+    <!--        AI chatbot - needs to be at the top, after body tag           -->
+    <!-------------------------------------------------------------------------->
+    <!--<div id="chatStickyID" class="chatStickyIcon">
+            <div id="chatTitleID" class="chatTitle">
+                <div class="logoChat">
+                    <p>☁️</p>
+                </div>
+                <div class="nameChat">
+                    <p>Cloud<b>IA</b></p>
+                </div>
+                <div id="closeChatBtnID" class="closeChat">
+                    <p>⛌</p>
+                </div>
+            </div>
+            <div id="chatScrollAreaID" class="chatScrollArea">
+                <div class="userMessage">Lorem ipsum dolor sit amet.</div>
+                <div class="seenMessage">seen</div>
+                <div class="cloudMessage">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+            </div>
+            <div id="chatTextAreaID" class="chatTextArea">
+                <div class="textChat">
+                    <textarea name="" id="userText"></textarea>
+                </div>
+                <div class="chatButon">
+                    <div id="chatButonID" class="chatSendBtn">
+                        <p>🗪</p>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+    <script src="/JavaScript/main.js"></script>
+</body>
+</html>
