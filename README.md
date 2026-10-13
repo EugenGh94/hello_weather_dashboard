@@ -4,7 +4,7 @@ A responsive weather dashboard built with vanilla HTML, CSS and JavaScript, usin
 
 **Live demo:** [helloweather.info](https://helloweather.info)
 
-![Hello Weather Dashboard screenshot](screenshots/dashboard.png)
+![Hello Weather Dashboard - Desktop](Screenshots/helloWeatherDesktop.jpg)
 
 ## Stack
 
