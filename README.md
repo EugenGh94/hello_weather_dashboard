@@ -16,7 +16,7 @@ HTML, CSS, JavaScript, OpenWeatherMap API
 - Added client-side request limiting (sessionStorage and localStorage) to protect the API quota.
 - Secured the OpenWeather API key behind a Cloudflare Worker proxy: the frontend calls the Worker, which adds the key server-side as an encrypted secret, forwards only the three endpoints the app uses, and allows browser access only from approved origins (CORS).
 
-![Hello Weather Dashboard - Desktop](Screenshots/helloWeatherDesktop.jpg)
-![Hello Weather Dashboard - Tablet](Screenshots/helloWeatherTablet.jpg)
-![Hello Weather Dashboard - Mobile](Screenshots/helloWeatherMobile.jpg)
-![Hello Weather Dashboard - Dark](Screenshots/helloWeatherDark.jpg)
+<img src="Screenshots/helloWeatherDesktop.jpg" alt="Desktop view" width="800">
+<img src="Screenshots/helloWeatherTablet.jpg" alt="Tablet view" width="400">
+<img src="Screenshots/helloWeatherMobile.jpg" alt="Mobile view" width="200">
+<img src="Screenshots/helloWeatherDark.jpg" alt="Dark Theme view" width="800">
