@@ -4,8 +4,6 @@ A responsive weather dashboard built with vanilla HTML, CSS and JavaScript, usin
 
 **Live demo:** [helloweather.info](https://helloweather.info)
 
-![Hello Weather Dashboard - Desktop](Screenshots/helloWeatherDesktop.jpg)
-
 ## Stack
 
 HTML, CSS, JavaScript, OpenWeatherMap API
@@ -17,3 +15,8 @@ HTML, CSS, JavaScript, OpenWeatherMap API
 - Designed a touch-friendly layout for desktop, tablet, and phone, with an embedded interactive weather map.
 - Added client-side request limiting (sessionStorage and localStorage) to protect the API quota.
 - Secured the OpenWeather API key behind a Cloudflare Worker proxy: the frontend calls the Worker, which adds the key server-side as an encrypted secret, forwards only the three endpoints the app uses, and allows browser access only from approved origins (CORS).
+
+![Hello Weather Dashboard - Desktop](Screenshots/helloWeatherDesktop.jpg)
+![Hello Weather Dashboard - Tablet](Screenshots/helloWeatherTablet.jpg)
+![Hello Weather Dashboard - Mobile](Screenshots/helloWeatherMobile.jpg)
+![Hello Weather Dashboard - Dark](Screenshots/helloWeatherDark.jpg)
