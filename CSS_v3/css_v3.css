@@ -896,6 +896,7 @@ p, h2 {
     display: flex;
     height: 180px;
     width: 100%;
+    pointer-events: auto; /* because if ad-blockers */
 }
 .insideCookie {
     grid-template-columns: 10fr 2fr;
@@ -947,6 +948,7 @@ p, h2 {
     display: flex;
     width: 100%;
     z-index: 1;
+    pointer-events: none; /* ad-blockers would break functionality */
 }
  /*/////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*\
 /////////////////////////////////  Tablet resolution  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
