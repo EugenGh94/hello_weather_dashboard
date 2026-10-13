@@ -1,5 +1,5 @@
-// Only Live Server can use the worker from browser
-const ALLOWED_ORIGINS = ["http://127.0.0.1:5500"];
+// Only Live Server and Domain can use the worker from browser
+const ALLOWED_ORIGINS = ["http://127.0.0.1:5500", "https://helloweather.info"];
 
 
 // OpenWeather endpoints used
